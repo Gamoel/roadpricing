@@ -16,4 +16,12 @@ public class BusTest {
     public void defaultValueOfInitialToll() {
         Assertions.assertEquals(50000, Bus.INITIAL_TOLL);
     }
+
+    @Test
+    public void tollEqualsFlatRate() {
+        Bus bus = new Bus();
+        int newFlatrate = 60000;
+        bus.setFlatRate(newFlatrate);
+        Assertions.assertEquals(newFlatrate, bus.getToll());
+    }
 }
