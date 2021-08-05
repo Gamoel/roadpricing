@@ -7,22 +7,30 @@ public class PassengerCarTest {
 
     @Test
     public void tollOfLoneRider() {
-        PassengerCar passengerCar = passengerCarWithPassengerCount(0);
+        PassengerCar passengerCar = unpoweredCarWithPassengerCount(0);
         Assertions.assertEquals(PassengerCar.BASETOLL, passengerCar.getToll());
     }
 
     @Test
     public void tollWithOnePassenger() {
-        PassengerCar passengerCar = passengerCarWithPassengerCount(1);
+        PassengerCar passengerCar = unpoweredCarWithPassengerCount(1);
         Assertions.assertEquals(PassengerCar.BASETOLL +
                 PassengerCar.PASSENGERTOLL, passengerCar.getToll());
     }
 
     @Test
     public void tollWithTwoPassenger() {
-        PassengerCar passengerCar = passengerCarWithPassengerCount(2);
+        PassengerCar passengerCar = unpoweredCarWithPassengerCount(2);
         Assertions.assertEquals(PassengerCar.BASETOLL + (PassengerCar.PASSENGERTOLL * 2)
                 , passengerCar.getToll());
+    }
+
+    @Test
+    public void tollIsAlsoBasedOnPower() {
+        final int power = 100;
+        PassengerCar passengerCar = loneDriverWithPower(power);
+        Assertions.assertEquals(PassengerCar.BASETOLL +
+                (power * PassengerCar.POWERTOLLPERKW), passengerCar.getToll());
     }
 
     @Test
@@ -33,11 +41,15 @@ public class PassengerCarTest {
     }
 
     private PassengerCar somePassengerCar() {
-        return passengerCarWithPassengerCount(0);
+        return unpoweredCarWithPassengerCount(0);
     }
 
-    private PassengerCar passengerCarWithPassengerCount(int passengerCount) {
-        return new PassengerCar(passengerCount);
+    private PassengerCar unpoweredCarWithPassengerCount(int passengerCount) {
+        return new PassengerCar(0, passengerCount);
     }
 
+
+    private PassengerCar loneDriverWithPower(int power) {
+        return new PassengerCar(power, 0);
+    }
 }
