@@ -7,22 +7,26 @@ public class MotorBikeTest {
 
     @Test
     public void tollOfLoneRider() {
-        MotorBike motorBike = motorBikeWithLoneRider();
+        MotorBike motorBike = motorBikeWithPassengerCount(0);
         Assertions.assertEquals(MotorBike.BASETOLL, motorBike.getToll());
     }
 
     @Test
     public void tollWithOnePassenger() {
-        MotorBike motorBike = motorBikeWithOnePassenger();
+        MotorBike motorBike = motorBikeWithPassengerCount(1);
         Assertions.assertEquals(MotorBike.BASETOLL +
                 MotorBike.PASSENGERTOLL, motorBike.getToll());
     }
 
-    private MotorBike motorBikeWithLoneRider() {
-        return new MotorBike(0);
+    @Test
+    public void tollWithTwoPassenger() {
+        MotorBike motorBike = motorBikeWithPassengerCount(2);
+        Assertions.assertEquals(MotorBike.BASETOLL + (MotorBike.PASSENGERTOLL * 2)
+                , motorBike.getToll());
     }
 
-    private MotorBike motorBikeWithOnePassenger() {
-        return new MotorBike(1);
+    private MotorBike motorBikeWithPassengerCount(int passengerCount) {
+        return new MotorBike(passengerCount);
     }
+
 }
