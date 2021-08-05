@@ -19,7 +19,7 @@ public class MotorBikeTest {
     }
 
     private MotorBike motorBikeWithLoneRider() {
-        return new MotorBike();
+        return new MotorBike(0);
     }
 
     private MotorBike motorBikeWithOnePassenger() {
