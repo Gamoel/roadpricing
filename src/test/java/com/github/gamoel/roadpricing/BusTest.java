@@ -26,13 +26,8 @@ public class BusTest {
 
     @Test
     public void toStringAppendsIdentifier() {
-        String busString = bus.toString();
+        String vehicleString = bus.toString();
         Assertions.assertEquals(Bus.IDENTIFIER,
-                getTrailingCharacters(busString, Bus.IDENTIFIER.length()));
+                StringSupport.getTrailingCharacters(vehicleString, Bus.IDENTIFIER.length()));
     }
-
-    private String getTrailingCharacters(String string, int count) {
-        return string.substring(string.length() - count);
-    }
-    
 }

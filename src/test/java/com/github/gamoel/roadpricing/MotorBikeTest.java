@@ -25,6 +25,17 @@ public class MotorBikeTest {
                 , motorBike.getToll());
     }
 
+    @Test
+    public void toStringAppendsIdentifier() {
+        String vehicleString = someMotorBike().toString();
+        Assertions.assertEquals(MotorBike.IDENTIFIER,
+                StringSupport.getTrailingCharacters(vehicleString, MotorBike.IDENTIFIER.length()));
+    }
+
+    private MotorBike someMotorBike() {
+        return motorBikeWithPassengerCount(0);
+    }
+
     private MotorBike motorBikeWithPassengerCount(int passengerCount) {
         return new MotorBike(passengerCount);
     }
