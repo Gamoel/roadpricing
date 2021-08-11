@@ -15,6 +15,6 @@ public class Bus {
 
     @Override
     public String toString() {
-        return IDENTIFIER;
+        return super.toString() + IDENTIFIER;
     }
 }

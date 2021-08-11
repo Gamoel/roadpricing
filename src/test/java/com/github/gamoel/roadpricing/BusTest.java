@@ -1,5 +1,7 @@
 package com.github.gamoel.roadpricing;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +31,12 @@ public class BusTest {
         String vehicleString = bus.toString();
         Assertions.assertEquals(Bus.IDENTIFIER,
                 StringSupport.getTrailingCharacters(vehicleString, Bus.IDENTIFIER.length()));
+    }
+
+    @Test
+    public void toStringIncludesInformationFromVehicle() {
+        // TODO: Make Better Next Time!
+        String vehicleString = bus.toString();
+        MatcherAssert.assertThat(vehicleString.length(), Matchers.greaterThan(Bus.IDENTIFIER.length()));
     }
 }
