@@ -19,6 +19,17 @@ public class TruckTest {
                 truck.getToll());
     }
 
+    @Test
+    public void toStringAppendsIdentifier() {
+        String vehicleString = someTruck().toString();
+        Assertions.assertEquals(Truck.IDENTIFIER,
+                StringSupport.getTrailingCharacters(vehicleString, Truck.IDENTIFIER.length()));
+    }
+
+    private Truck someTruck() {
+        return truckWithZeroWeight();
+    }
+
     private Truck truckWithZeroWeight() {
         return truckWithWeightOf(0);
     }
