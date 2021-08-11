@@ -2,9 +2,9 @@ package com.github.gamoel.roadpricing;
 
 public class Truck {
 
-    public static final String IDENTIFIER = "[Truck]";
-    final static int BASETOLL = 25000;
-    final static int WEIGHTTOLL = 10;
+    static final String IDENTIFIER = "[Truck]";
+    static final int BASETOLL = 25000;
+    static final int WEIGHTTOLL = 10;
     private final int weight;
 
     public Truck(int weight) {

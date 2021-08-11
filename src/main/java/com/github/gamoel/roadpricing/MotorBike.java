@@ -1,9 +1,9 @@
 package com.github.gamoel.roadpricing;
 
 public class MotorBike {
-    public static final int BASETOLL = 3000;
-    public static final int PASSENGERTOLL = 1000;
-    public static final String IDENTIFIER = "[MotorBike]";
+    static final int BASETOLL = 3000;
+    static final int PASSENGERTOLL = 1000;
+    static final String IDENTIFIER = "[MotorBike]";
     private final int passenger;
 
     public MotorBike(int passenger) {

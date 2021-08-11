@@ -1,10 +1,10 @@
 package com.github.gamoel.roadpricing;
 
 public class PassengerCar {
-    public static final int BASETOLL = 5000;
-    public static final int PASSENGERTOLL = 2000;
-    public static final int POWERTOLLPERKW = 99;
-    public static final String IDENTIFIER = "[PassengerCar]";
+    static final int BASETOLL = 5000;
+    static final int PASSENGERTOLL = 2000;
+    static final int POWERTOLLPERKW = 99;
+    static final String IDENTIFIER = "[PassengerCar]";
     private final int power;
     private final int passenger;
 
