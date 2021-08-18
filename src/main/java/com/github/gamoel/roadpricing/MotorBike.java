@@ -1,21 +1,21 @@
 package com.github.gamoel.roadpricing;
 
-public class MotorBike {
+public class MotorBike extends Vehicle {
     static final int BASETOLL = 3000;
     static final int PASSENGERTOLL = 1000;
     static final String IDENTIFIER = "[MotorBike]";
-    private final int passenger;
 
-    public MotorBike(int passenger) {
-        this.passenger = passenger;
+    public MotorBike(String registration, int power, int weight, int passengers) {
+        super(registration, power, weight, passengers);
     }
 
+    @Override
     public int getToll() {
-        return BASETOLL + (this.passenger * PASSENGERTOLL);
+        return BASETOLL + (getPassengers() * PASSENGERTOLL);
     }
 
     @Override
     public String toString() {
-        return IDENTIFIER;
+        return super.toString() + " " + IDENTIFIER;
     }
 }
