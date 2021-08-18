@@ -34,12 +34,13 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
+        int toll = getToll();
         return String.format("%10s %3dkW %5dkg %2d %6d.%02d EUR",
                 registration,
                 getPower(),
                 getWeight(),
                 getPassengers(),
-                getToll() / 100,
-                getToll() % 100);
+                toll / 100,
+                toll % 100);
     }
 }
