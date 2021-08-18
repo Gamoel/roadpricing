@@ -1,7 +1,10 @@
 package com.github.gamoel.roadpricing;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.endsWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BusTest extends VehicleTest {
     private Bus bus = someBus();
@@ -14,21 +17,20 @@ public class BusTest extends VehicleTest {
     */
     @Test
     public void defaultValueOfInitialFlatRate() {
-        Assertions.assertEquals(50000, Bus.INITIAL_FLATRATE);
+        assertEquals(50000, Bus.INITIAL_FLATRATE);
     }
 
     @Test
     public void tollEqualsFlatRate() {
         int newFlatrate = 60000;
         Bus.setFlatRate(newFlatrate);
-        Assertions.assertEquals(newFlatrate, bus.getToll());
+        assertEquals(newFlatrate, bus.getToll());
     }
 
     @Test
     public void toStringAppendsIdentifier() {
         String vehicleString = bus.toString();
-        Assertions.assertEquals(Bus.IDENTIFIER,
-                StringSupport.getTrailingCharacters(vehicleString, Bus.IDENTIFIER.length()));
+        assertThat(vehicleString, endsWith(" " + Bus.IDENTIFIER));
     }
 
     @Override
