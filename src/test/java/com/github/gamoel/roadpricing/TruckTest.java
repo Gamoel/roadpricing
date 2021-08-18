@@ -1,29 +1,31 @@
 package com.github.gamoel.roadpricing;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TruckTest {
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.endsWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class TruckTest extends VehicleTest {
 
     @Test
     public void tollOfTruckWithZeroWeight() {
         Truck truck = truckWithZeroWeight();
-        Assertions.assertEquals(Truck.BASETOLL, truck.getToll());
+        assertEquals(Truck.BASETOLL, truck.getToll());
     }
 
     @Test
     public void tollOfTruckWithWeight() {
         int weight = 1000;
         Truck truck = truckWithWeightOf(weight);
-        Assertions.assertEquals(Truck.BASETOLL + (weight * Truck.WEIGHTTOLL),
+        assertEquals(Truck.BASETOLL + (weight * Truck.WEIGHTTOLL),
                 truck.getToll());
     }
 
     @Test
     public void toStringAppendsIdentifier() {
         String vehicleString = someTruck().toString();
-        Assertions.assertEquals(Truck.IDENTIFIER,
-                StringSupport.getTrailingCharacters(vehicleString, Truck.IDENTIFIER.length()));
+        assertThat(vehicleString, endsWith(" " + Truck.IDENTIFIER));
     }
 
     private Truck someTruck() {
@@ -35,6 +37,16 @@ public class TruckTest {
     }
 
     private Truck truckWithWeightOf(int weight) {
-        return new Truck(weight);
+        return new Truck("", 0, weight, 0);
+    }
+
+    @Override
+    protected Vehicle getVehicleWith(String registration, int power, int weight, int passengers, int toll) {
+        return new Truck(registration, power, weight, passengers) {
+            @Override
+            public int getToll() {
+                return toll;
+            }
+        };
     }
 }

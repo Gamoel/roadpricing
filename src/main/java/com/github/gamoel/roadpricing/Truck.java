@@ -1,22 +1,22 @@
 package com.github.gamoel.roadpricing;
 
-public class Truck {
+public class Truck extends Vehicle {
 
     static final String IDENTIFIER = "[Truck]";
     static final int BASETOLL = 25000;
     static final int WEIGHTTOLL = 10;
-    private final int weight;
 
-    public Truck(int weight) {
-        this.weight = weight;
+    public Truck(String registration, int power, int weight, int passengers) {
+        super(registration, power, weight, passengers);
     }
 
+    @Override
     public int getToll() {
-        return BASETOLL + (weight * WEIGHTTOLL);
+        return BASETOLL + (getWeight() * WEIGHTTOLL);
     }
 
     @Override
     public String toString() {
-        return IDENTIFIER;
+        return super.toString() + " " + IDENTIFIER;
     }
 }
