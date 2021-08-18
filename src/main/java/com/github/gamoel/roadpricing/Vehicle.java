@@ -25,11 +25,7 @@ public abstract class Vehicle {
     protected int getPassengers() {
         return passengers;
     }
-
-    public void setPassengers(int passengers) {
-        this.passengers = passengers;
-    }
-
+    
     public abstract int getToll();
 
     @Override
