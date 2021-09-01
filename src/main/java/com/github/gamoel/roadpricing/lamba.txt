@@ -1,0 +1,23 @@
+        TextPrinter printer = System.out::println;
+
+        TextPrinter printer = string -> System.out.println(string);
+
+        TextPrinter printer = string ->{
+            System.out.println(string);
+        };
+
+        TextPrinter printer = (string) ->{
+            System.out.println(string);
+        };
+
+        TextPrinter printer = (String string) ->{
+            System.out.println(string);
+        };
+
+
+        TextPrinter printer = new TextPrinter() {
+            @Override
+            public void printLine(String string) {
+                System.out.println(string);
+            }
+        };

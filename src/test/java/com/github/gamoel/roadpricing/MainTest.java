@@ -12,7 +12,7 @@ class MainTest {
                 getSomeVehicle("Vehicle A"),
         };
 
-        printTable(printer, vehicleArray);
+        Main.printTable(printer, vehicleArray);
         Mockito.verify(printer).printLine("Vehicle A");
     }
 
@@ -23,7 +23,7 @@ class MainTest {
                 getSomeVehicle("Vehicle B"),
         };
 
-        printTable(printer, vehicleArray);
+        Main.printTable(printer, vehicleArray);
         Mockito.verify(printer).printLine("Vehicle A");
         Mockito.verify(printer).printLine("Vehicle B");
     }
@@ -34,9 +34,4 @@ class MainTest {
         return printVehicle;
     }
 
-    private void printTable(TextPrinter printer, Vehicle[] vehicleArray) {
-        for (Vehicle vehicle : vehicleArray) {
-            printer.printLine(vehicle.toString());
-        }
-    }
 }
