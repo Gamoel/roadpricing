@@ -9,24 +9,29 @@ class MainTest {
     @Test
     public void printOneItemFromArray() {
         Vehicle[] vehicleArray = new Vehicle[]{
-                new Truck("BB-667Z", 320, 15785, 0),
+                getSomeVehicle("Vehicle A"),
         };
 
         printTable(printer, vehicleArray);
-        Mockito.verify(printer).printLine("   BB-667Z 320kW 15785kg  0   1828.50 EUR [Truck]");
+        Mockito.verify(printer).printLine("Vehicle A");
     }
 
     @Test
     public void printTwoItemsFromArray() {
         Vehicle[] vehicleArray = new Vehicle[]{
-                new Truck("BB-667Z", 320, 15785, 0),
-                new MotorBike("BP-133", 75, 210, 0),
+                getSomeVehicle("Vehicle A"),
+                getSomeVehicle("Vehicle B"),
         };
 
         printTable(printer, vehicleArray);
-        Mockito.verify(printer).printLine("   BB-667Z 320kW 15785kg  0   1828.50 EUR [Truck]");
-        Mockito.verify(printer).printLine("    BP-133  75kW   210kg  0     30.00 EUR [MotorBike]");
+        Mockito.verify(printer).printLine("Vehicle A");
+        Mockito.verify(printer).printLine("Vehicle B");
+    }
 
+    private Vehicle getSomeVehicle(final String toStringResult) {
+        Vehicle printVehicle = Mockito.mock(Vehicle.class);
+        Mockito.when(printVehicle.toString()).thenReturn(toStringResult);
+        return printVehicle;
     }
 
     private void printTable(TextPrinter printer, Vehicle[] vehicleArray) {
