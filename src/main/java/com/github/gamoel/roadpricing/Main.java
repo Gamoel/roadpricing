@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
         TextPrinter printer = System.out::println;
-
-        printTable(printer, init());
+        Vehicle[] vehicles = init();
+        printTable(printer, vehicles);
     }
 
     public static Vehicle[] init() {

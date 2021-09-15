@@ -9,7 +9,7 @@ public class Bus extends Vehicle {
     public Bus(String registration, int power, int weight, int passengers) {
         super(registration, power, weight, passengers);
     }
-
+    
     @Override
     public int getToll() {
         return flatRate;
