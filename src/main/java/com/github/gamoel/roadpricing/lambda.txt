@@ -1,0 +1,26 @@
+
+        //method reference
+        TextPrinter printer = System.out::println;
+
+        //lambda
+        TextPrinter printer = string -> System.out.println(string);
+
+        TextPrinter printer = string ->{
+            System.out.println(string);
+        };
+
+        TextPrinter printer = (string) ->{
+            System.out.println(string);
+        };
+
+        TextPrinter printer = (String string) ->{
+            System.out.println(string);
+        };
+
+        //anonymous inner class
+        TextPrinter printer = new TextPrinter() {
+            @Override
+            public void printLine(String string) {
+                System.out.println(string);
+            }
+        };
