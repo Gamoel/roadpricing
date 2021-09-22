@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         TextPrinter printer = System.out::println;
         Vehicle[] vehicles = init();
-        printTable(printer, vehicles);
+        new RoadPricer(printer).reportTable(vehicles);
     }
 
     public static Vehicle[] init() {
@@ -17,11 +17,5 @@ public class Main {
                 new Bus("PT-4712 X", 205, 7050, 60),
                 new Bus("PT-4711 X", 205, 7050, 75),
         };
-    }
-
-    static void printTable(TextPrinter printer, Vehicle[] vehicleArray) {
-        for (Vehicle vehicle : vehicleArray) {
-            printer.printLine(vehicle.toString());
-        }
     }
 }

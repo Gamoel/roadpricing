@@ -3,7 +3,7 @@ package com.github.gamoel.roadpricing;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-class MainTest {
+class RoadPricerTest {
     private TextPrinter printer = Mockito.mock(TextPrinter.class);
 
     @Test
@@ -12,7 +12,7 @@ class MainTest {
                 getSomeVehicle("Vehicle A"),
         };
 
-        Main.printTable(printer, vehicleArray);
+        new RoadPricer(printer).reportTable(vehicleArray);
         Mockito.verify(printer).printLine("Vehicle A");
     }
 
@@ -23,7 +23,7 @@ class MainTest {
                 getSomeVehicle("Vehicle B"),
         };
 
-        Main.printTable(printer, vehicleArray);
+        new RoadPricer(printer).reportTable(vehicleArray);
         Mockito.verify(printer).printLine("Vehicle A");
         Mockito.verify(printer).printLine("Vehicle B");
     }
