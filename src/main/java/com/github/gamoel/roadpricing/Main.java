@@ -5,7 +5,10 @@ public class Main {
     public static void main(String[] args) {
         TextPrinter printer = System.out::println;
         Vehicle[] vehicles = init();
-        new RoadPricer(printer).reportTable(vehicles);
+        RoadPricer roadPricer = new RoadPricer(printer);
+        new ReportTemplate(roadPricer).createReportOf(vehicles);
+        Bus.setFlatRate(75000);
+        new SmallReportTemplate(roadPricer).createReportOf(vehicles);
     }
 
     public static Vehicle[] init() {
