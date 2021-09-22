@@ -3,6 +3,8 @@ package com.github.gamoel.roadpricing;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.stream.Stream;
+
 class RoadPricerTest {
     private TextPrinter printer = Mockito.mock(TextPrinter.class);
 
@@ -28,10 +30,25 @@ class RoadPricerTest {
         Mockito.verify(printer).printLine("Vehicle B");
     }
 
+    @Test
+    public void printVehicleCount() {
+        int count = 3;
+        new RoadPricer(printer).reportVehicleCount(getSomeVehicles(count));
+        Mockito.verify(printer).printLine(String.format("%d vehicle(s)", count));
+    }
+
     private Vehicle getSomeVehicle(final String toStringResult) {
-        Vehicle printVehicle = Mockito.mock(Vehicle.class);
+        Vehicle printVehicle = getSomeVehicle();
         Mockito.when(printVehicle.toString()).thenReturn(toStringResult);
         return printVehicle;
+    }
+
+    private Vehicle[] getSomeVehicles(int count) {
+        return Stream.generate(this::getSomeVehicle).limit(count).toArray(Vehicle[]::new);
+    }
+
+    private Vehicle getSomeVehicle() {
+        return Mockito.mock(Vehicle.class);
     }
 
 }
